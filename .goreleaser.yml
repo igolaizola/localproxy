@@ -1,0 +1,14 @@
+builds:
+  - id: localproxy
+    binary: localproxy
+    main: ./cmd/localproxy
+    goarch:
+      - amd64
+      - arm64
+      - arm
+archives:
+  - id: localproxy
+    builds:
+      - localproxy
+    format: zip
+    name_template: 'localproxy_{{ .Version }}_{{- if eq .Os "darwin" }}macos{{- else }}{{ .Os }}{{ end }}_{{ .Arch }}'
